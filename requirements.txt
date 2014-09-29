@@ -1,0 +1,2 @@
+praw>=2.1.18
+git+git://github.com/paul-nechifor/kant-generator-pro.git#egg=kant_generator_pro

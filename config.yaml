@@ -1,0 +1,11 @@
+# Private options --------------------------------------------------------------
+# It's best to overwrite these values in 'config-private.yaml'.
+
+# Add your real Reddit username here.
+userAgent: A bot by /u/<your real Reddit username goes here>
+# The username for the bot.
+username: username
+# Its password.
+password: password
+
+# Other options ----------------------------------------------------------------
