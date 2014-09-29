@@ -9,3 +9,6 @@ username: username
 password: password
 
 # Other options ----------------------------------------------------------------
+
+# The format of the response.
+format: "{emote}{response}"

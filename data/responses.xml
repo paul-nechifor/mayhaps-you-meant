@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<grammar>
+  <ref id="very">
+    <p>very</p>
+    <p>terribly</p>
+    <p>awfully</p>
+    <p>extremely</p>
+  </ref>
+
+  <ref id="sorry">
+    <p>sorry</p>
+    <p>sorry</p>
+    <p>sorry</p>
+    <p>regretful</p>
+  </ref>
+
+  <ref id="tell">
+    <p>tell</p>
+    <p>tell</p>
+    <p>tell</p>
+    <p>inform</p>
+  </ref>
+
+  <ref id="probably">
+    <p>probably</p>
+    <p>probably</p>
+    <p>most likely</p>
+  </ref>
+
+  <ref id="and">
+    <p>and</p>
+    <p>, </p>
+  </ref>
+
+  <ref id="verySorry">
+    <p>
+      <p chance="40">so</p>
+      <p chance="90"><xref id="very"/></p>
+      <xref id="sorry"/></p>
+    <p>
+      <p chance="30">so </p>
+      <p chance="90"><xref id="very"/>
+      <p chance="70">, <xref id="very"/></p></p>
+      <xref id="sorry"/></p>
+  </ref>
+  
+  <ref id="correctMe">
+    <p>and please do correct me if I’m wrong</p>
+  </ref>
+  
+  <ref id="correctMeAll">
+    <p>– <xref id="correctMe"/> –</p>
+    <p></p>
+  </ref>
+  
+  <ref id="wrong">
+    <p>wrong</p>
+    <p>wrong</p>
+    <p>incorrect</p>
+    <p>erroneous</p>
+    <p>mistaken</p>
+  </ref>
+  
+  <ref id="upset">
+    <p>upset</p>
+    <p>upset</p>
+    <p>angry</p>
+    <p>distressed</p>
+    <p>unhappy</p>
+  </ref>
+  
+  <ref id="dontBeUpset">
+    <p>don’t take this the wrong way</p>
+    <p>don’t be <xref id="upset"/></p>
+    <p>don’t get
+      <p chance="30">too</p>
+      <xref id="upset"/></p>
+  </ref>
+  
+  <ref id="inform">
+    <p>inform</p>
+    <p>inform</p>
+    <p>inform</p>
+    <p>notify</p>
+  </ref>
+  
+  <ref id="people">
+    <p>people</p>
+    <p>people</p>
+    <p>others</p>
+    <p>folks</p>
+  </ref>
+  
+  <ref id="aMistake">
+    <p>a mistake</p>
+    <p>a mistake</p>
+    <p>a mistake</p>
+    <p>an error</p>
+    <p>a typo</p>
+  </ref>
+
+  <ref id="p0">
+    <p>I’m <xref id="verySorry"/> to have to <xref id="tell"/> you <p
+    chance="80"><xref id="correctMeAll"/></p> that you might be <xref
+    id="wrong"/> in your spelling of “{right}” as “{wrong}”. But I’m a bot
+    <xref id="and"/> I’m <xref id="probably"/> <xref id="wrong"/>. Please
+    <xref id="dontBeUpset"/>, I’m only trying to <xref id="inform"/> <xref
+    id="people"/> in case they don’t know they might have made <xref
+    id="aMistake"/>.</p>
+  </ref>
+
+  <ref id="correction">
+    <xref id="p0"/>
+  </ref>
+</grammar>
