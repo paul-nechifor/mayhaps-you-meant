@@ -21,6 +21,21 @@ Install the script's dependencies:
     virtualenv env
     env/bin/pip install -r requirements.txt
 
+## Configure
+
+You can reset private fields from [`config.yaml`](config.yaml) by writing them
+in `config-private.yaml` which is ignored from source control. Duplicate and
+edit the example config override:
+
+    cp config-private-ex.yaml config-private.yaml
+    vim config-private.yaml # Or another editor.
+
+## Running
+
+Run the bot:
+
+    env/bin/python bot.py
+
 ## License
 
 MIT
