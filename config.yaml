@@ -12,3 +12,13 @@ password: password
 
 # The format of the response.
 format: "{emote}{response}"
+# Subreddit in which to look for comments.
+subreddit: all
+# PRAW comment_stream verbosity.
+verbosity: 0
+# Time to sleep between commenting.
+commentSleepTime: 60
+# Time to sleep on resetting due to errors.
+resetSleepTime: 300
+commentFrequency: 50
+logUpdateTime: 10
