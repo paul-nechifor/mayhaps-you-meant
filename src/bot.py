@@ -20,20 +20,6 @@ import yaml
 def getRelative(file):
     return path.join(path.dirname(__file__), file)
 
-def setPidLock():
-    pid = str(os.getpid())
-    pidFile = getRelative('../mym.pid')
-    if path.isfile(pidFile):
-        print 'PID lock exists. Delete "mym.pid".'
-        sys.exit()
-    else:
-        f = file(pidFile, 'w')
-        f.write(pid)
-        f.close()
-
-def removePidLock():
-    os.unlink(getRelative('../mym.pid'))
-
 class PoisonPillException(Exception):
     pass
 
@@ -205,8 +191,6 @@ class Client:
         raise PoisonPillException
 
 def main():
-    setPidLock()
-
     client = Client()
 
     def signalHandler(signal, frame):
@@ -214,8 +198,6 @@ def main():
     signal.signal(signal.SIGTERM, signalHandler)
 
     client.loop()
-
-    removePidLock()
 
 if __name__ == '__main__':
     main()
