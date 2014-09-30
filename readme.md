@@ -9,18 +9,11 @@ You can contribute by:
 
 * adding more corrections in [`data/corrections.yaml`](data/corrections.yaml),
 * updating the response grammar in [`data/responses.xml`](data/responses.xml),
-* improving the bot code in [`bot.py`](bot.py).
+* improving the bot code in [`src/bot.py`](src/bot.py).
 
 ## Install
 
-Get Virtualenv if you don't have it:
-
-    sudo pip install virtualenv
-
-Install the script's dependencies:
-
-    virtualenv env
-    env/bin/pip install -r requirements.txt
+The development environment is automated with Vagrant so you need to install that.
 
 ## Configure
 
@@ -33,9 +26,17 @@ edit the example config override:
 
 ## Running
 
-Run the bot:
+Start everything up:
 
-    env/bin/python bot.py
+    ./ctl start
+
+Stop everything:
+
+    ./ctl stop
+
+Follow the logs in real time:
+
+    ./ctl logs
 
 ## License
 
