@@ -1,14 +1,15 @@
 # Mayhaps You Meant
 
-This is a Reddit bot which aims to inform people about their grammatical errors
-without upsetting them.
+This is a Reddit bot which aims to inform people about their spelling errors
+without upsetting them. It's running on [/u/MayhapsYouMeant][bot].
 
 ## Contributions
 
 You can contribute by:
 
-* adding more corrections in [data/corrections.yaml](data/corrections.yaml),
-* updating the response grammar in [data/responses.xml](data/responses.xml).
+* adding more corrections in [`data/corrections.yaml`](data/corrections.yaml),
+* updating the response grammar in [`data/responses.xml`](data/responses.xml),
+* improving the bot code in [`bot.py`](bot.py).
 
 ## Install
 
@@ -39,3 +40,5 @@ Run the bot:
 ## License
 
 MIT
+
+[bot]: http://www.reddit.com/user/MayhapsYouMeant/
