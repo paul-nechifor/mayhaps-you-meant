@@ -78,19 +78,19 @@ class Client:
     def __init__(self):
         self.v = self.getValues()
         self.reddit = praw.Reddit(user_agent=self.v.userAgent)
-        self.corrector = Corrector(getRelative('data/corrections.yaml'))
-        self.responder = Responder(getRelative('data/responses.xml'),
-                getRelative('data/emotes.yaml'), self.v.format)
+        self.corrector = Corrector(getRelative('../data/corrections.yaml'))
+        self.responder = Responder(getRelative('../data/responses.xml'),
+                getRelative('../data/emotes.yaml'), self.v.format)
         self.responses = []
         self.nComments = 0
         self.lastReplyTime = time.time()
         self.lastLogTime = time.time()
 
     def getValues(self):
-        text = open(getRelative('config.yaml')).read()
+        text = open(getRelative('../config.yaml')).read()
         v = yaml.load(text)
         try:
-            text = open(getRelative('config-private.yaml')).read()
+            text = open(getRelative('../config-private.yaml')).read()
             for key, value in yaml.load(text).items():
                 v[key] = value
         except IOError:
@@ -125,6 +125,9 @@ class Client:
                 self.run()
             except urllib2.HTTPError:
                 self.log('Replying forbidden.')
+                time.sleep(self.v.resetSleepTime)
+            except praw.errors.APIException:
+                self.log('API exception.')
                 time.sleep(self.v.resetSleepTime)
             except:
                 self.log('Error')
