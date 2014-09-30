@@ -5,16 +5,37 @@ from collections import namedtuple
 from datetime import datetime
 from kant_generator_pro import KantGenerator
 from os import path
+import os
 import praw
 import random
 import re
+import signal
+import sys
 import time
+import threading
 import traceback
 import urllib2
 import yaml
 
 def getRelative(file):
     return path.join(path.dirname(__file__), file)
+
+def setPidLock():
+    pid = str(os.getpid())
+    pidFile = getRelative('../mym.pid')
+    if path.isfile(pidFile):
+        print 'PID lock exists. Delete "mym.pid".'
+        sys.exit()
+    else:
+        f = file(pidFile, 'w')
+        f.write(pid)
+        f.close()
+
+def removePidLock():
+    os.unlink(getRelative('../mym.pid'))
+
+class PoisonPillException(Exception):
+    pass
 
 class Corrector:
     def __init__(self, correctionsFile):
@@ -123,6 +144,8 @@ class Client:
             try:
                 self.login()
                 self.run()
+            except PoisonPillException:
+                break
             except urllib2.HTTPError:
                 self.log('Replying forbidden.')
                 time.sleep(self.v.resetSleepTime)
@@ -134,6 +157,7 @@ class Client:
                 traceback.print_exc()
                 self.reset()
                 time.sleep(self.v.resetSleepTime)
+        self.log('Stopped.')
 
     def processComment(self, comment):
         self.updateLog()
@@ -173,15 +197,25 @@ class Client:
             return
         comment, wrongs = self.getBestResponse()
         text = self.getResponseText(wrongs)
-        print '-'*20
-        print text
-        print '-'*20
         text = self.responder.getSmallText(text)
         comment.reply(text)
 
+    def shutdown(self):
+        self.log('Stopping.')
+        raise PoisonPillException
+
 def main():
+    setPidLock()
+
     client = Client()
+
+    def signalHandler(signal, frame):
+        client.shutdown()
+    signal.signal(signal.SIGTERM, signalHandler)
+
     client.loop()
+
+    removePidLock()
 
 if __name__ == '__main__':
     main()
