@@ -1,3 +1,0 @@
-praw>=2.1.18
-PyYAML>=3.11
-git+git://github.com/paul-nechifor/kant-generator-pro.git#egg=kant_generator_pro

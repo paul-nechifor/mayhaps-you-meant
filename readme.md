@@ -1,3 +1,7 @@
+# This repository has been moved to [gitlab.com/paul-nechifor/mayhaps-you-meant](http://gitlab.com/paul-nechifor/mayhaps-you-meant).
+
+Old readme:
+
 # Mayhaps You Meant
 
 This is a Reddit bot which aims to inform people about their spelling errors
